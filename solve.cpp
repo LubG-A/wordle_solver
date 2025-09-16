@@ -12,7 +12,7 @@ struct WordScore{
     double score;
 };
 struct Compare {
-    bool operator()(const WordScore& a, const WordScore& b) {
+    bool operator()(const WordScore& a, const WordScore& b) const {
         return a.score > b.score;
     }
 };
@@ -287,7 +287,7 @@ void enum_trie_str(TRIE *node, int position) {
             word[5] = '\0';
             string word_str(word);
             double score = ngram_score.score(word_str);
-            word_score.insert({word_str, ngram_score.score(word)});
+            word_score.insert({word_str, score});
         }
         return ;
     }
@@ -321,7 +321,7 @@ void enum_str(int position) {
             word[5] = '\0';
             string word_str(word);
             double score = ngram_score.score(word_str);
-            word_score.insert({word_str, ngram_score.score(word)});
+            word_score.insert({word_str, score});
         }
         return ;
     }
